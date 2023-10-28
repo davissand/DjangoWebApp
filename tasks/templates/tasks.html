@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container mt-5 p-5">
+  <h1>Tasks Pending</h1>
+  <ul class="list-group">
+      {% for task in tasks %}
+          <li class="list-group-item">
+              <a href="{% url 'task_detail' task.id %}">
+                  <h5 class="mb-1">{{ task.title }}</h5>
+                  <p class="mb-1">{{ task.description }}</p>
+                  <small class="text-muted">{{ task.user }}</small>
+                  {% if task.important %}
+                      <span class="badge badge-danger">Importante</span>
+                  {% endif %}
+              </a>
+          </li>
+      {% endfor %}
+  </ul>
+</div>
+    
+{% endblock %}
+
